@@ -1,16 +1,16 @@
 
 class StrongPasswordChecker {
   bool isStrongPassword(String password) {
-    if (password.length < 8) return false;
-
-    if (!RegExp(r'[A-Z]').hasMatch(password)) return false;
-
-    if (!RegExp(r'[a-z]').hasMatch(password)) return false;
-
-    if (!RegExp(r'\d').hasMatch(password)) return false;
-
-    if (!RegExp(r'[!@#\$&*~]').hasMatch(password)) return false;
-    return true;
+    // Returns true if password meets all criteria:
+    // - At least 8 characters
+    // - Contains uppercase and lowercase letters
+    // - Contains at least one digit
+    // - Contains at least one special character
+    return password.length >= 8 &&
+           RegExp(r'[A-Z]').hasMatch(password) && // has uppercase
+           RegExp(r'[a-z]').hasMatch(password) && // has lowercase
+           RegExp(r'\d').hasMatch(password) &&    // has digit
+           RegExp(r'[!@#\$&*~]').hasMatch(password); // has special character
   }
 }
 
