@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:product_3/add_product.dart';
 import 'package:product_3/product_details.dart';
+import 'package:product_3/search_product.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -78,7 +80,16 @@ class HomePage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(8),
                       border: Border.all(color: Colors.grey),
                     ),
-                    child: Icon(Icons.search, color: Colors.grey),
+                    child: IconButton(
+                      onPressed: (){ 
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder:(context) => SearchPage(),)
+                        );
+                      }, 
+                      icon: Icon(
+                        Icons.search_rounded, color: Colors.grey,
+                      )),
                   ),
                 ],
               ),
@@ -356,7 +367,7 @@ class HomePage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          debugPrint('Add Product button pressed');
+          Navigator.push(context, MaterialPageRoute(builder: (context) => AddProduct()));
         },
         backgroundColor: const Color.fromARGB(255, 10, 92, 216),
         shape: CircleBorder(),

@@ -233,7 +233,7 @@ class Details extends StatelessWidget {
                                       }, 
                                       style: OutlinedButton.styleFrom(
                                         side: BorderSide(color: Colors.red),
-                                        padding: EdgeInsets.symmetric(horizontal: 44, vertical: 15),
+                                        minimumSize: Size(152, 50),
                                         shape: RoundedRectangleBorder(
                                           borderRadius: BorderRadius.circular(8),
                                         ),
@@ -250,7 +250,7 @@ class Details extends StatelessWidget {
                                     }, 
                                     style: ElevatedButton.styleFrom(
                                         backgroundColor: const Color.fromARGB(255, 10, 92, 216),
-                                        padding: EdgeInsets.symmetric(horizontal: 44, vertical: 15),
+                                        minimumSize: Size(152, 50),
                                         shape: RoundedRectangleBorder(
                                           borderRadius: BorderRadius.circular(8),
                                         ),
