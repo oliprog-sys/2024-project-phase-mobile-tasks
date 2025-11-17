@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:product_3/add_product.dart';
+import 'product_model.dart';
 
 class Details extends StatelessWidget {
-  const Details({super.key});
+  static const routeName = 'details';
+  final Product product;
+  final int index;
+
+  const Details({required this.product, required this.index, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +19,7 @@ class Details extends StatelessWidget {
               children: [
                 // Product Image
                 Container(
-                  width: 430,
+                  width: double.infinity,
                   height: 266,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(
@@ -38,7 +44,7 @@ class Details extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            'Men’s shoe',
+                            product.category,
                             style: TextStyle(
                               fontFamily: 'Poppins',
                               fontSize: 16,
@@ -48,7 +54,7 @@ class Details extends StatelessWidget {
                           ),
                           SizedBox(height: 18),
                           Text(
-                            'Derby Leather',
+                            product.name,
                             style: TextStyle(
                               fontFamily: 'Poppins',
                               fontSize: 24,
@@ -77,7 +83,7 @@ class Details extends StatelessWidget {
                           ),
                           SizedBox(height: 18),
                           Text(
-                            '\$120',
+                            '\$${product.price}',
                             style: TextStyle(
                               fontFamily: 'Poppins',
                               fontSize: 16,
@@ -98,7 +104,7 @@ class Details extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.all(20.0),
                   child: Text(
-                    'A derby leather shoe is a classic and versatile footwear option characterized by its open lacing system, where the shoelace eyelets are sewn on top of the vamp (the upper part of the shoe). This design feature provides a more relaxed and casual look compared to the closed lacing system of oxford shoes. Derby shoes are typically made of high-quality leather, known for its durability and elegance, making them suitable for both formal and casual occasions. With their timeless style and comfortable fit, derby leather shoes are a staple in any well-rounded wardrobe.',
+                    product.description,
                     style: TextStyle(fontFamily: 'Poppins', fontSize: 14),
                   ),
                 ),
@@ -110,7 +116,7 @@ class Details extends StatelessWidget {
                     children: [
                       OutlinedButton(
                         onPressed: () {
-                          debugPrint('delete button pressed');
+                          Navigator.pop(context, {"delete": true});
                         },
                         style: OutlinedButton.styleFrom(
                           side: BorderSide(color: Colors.red),
@@ -131,8 +137,17 @@ class Details extends StatelessWidget {
                       ),
 
                       ElevatedButton(
-                        onPressed: () {
-                          debugPrint('Update button pressed');
+                        onPressed: () async {
+                          final updated = await Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => AddProduct(product: product),
+                            ),
+                          );
+
+                          if (updated != null) {
+                            Navigator.pop(context, {"update": updated});
+                          }
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color.fromARGB(
