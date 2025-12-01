@@ -25,7 +25,6 @@ class MockProductRepository implements ProductRepository {
   
   @override
   List<Product> getAllProducts() {
-    // TODO: implement getAllProducts
     return productsList;
   }
   
