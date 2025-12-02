@@ -1,6 +1,6 @@
 # data_overview_layer
 
-This project follows Clean Architecture.  
+This project follows Clean Architecture.    
 Task 10 implements the Data Layer for the Product feature.
 
 ## Folder Structure
